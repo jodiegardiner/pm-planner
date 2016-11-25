@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load thread_extras %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <h1  class="subject-name">{{ subject.name }}</h1>
+        </div>
+    </div>
+    <div class="col-md-12">
+        {% if user.is_authenticated %}
+            <p>
+                <a href="{% url 'new_thread' subject.id %}" class="btn btn-primary btn-pmi">New Thread</a>
+            </p>
+        {% endif %}
+        <table class="table table-striped table-hover">
+            {% for thread in subject.threads.all %}
+
+                {% include "thread_item.html" %}
+
+            {% endfor %}
+        </table>
+     {% if user.is_authenticated %}
+            <p>
+                <a href="{% url 'new_thread' subject.id %}" class="btn btn-primary btn-pmi">New Thread</a>
+            </p>
+        {% endif %}
+    </div>
+{% endblock %}

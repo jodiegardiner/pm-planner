@@ -1,0 +1,263 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    {#    <meta name="viewport" content="width=device-width, initial-scale=1.0">#}
+    <meta name="description" content="">
+
+    <meta name="google-signin-client_id"
+          content="18079445520-8mch9r79c4pqloc27q644ht2um37a7mh.apps.googleusercontent.com">
+    {#    <link rel="icon" href="../../favicon.ico">#}
+
+    <title>PM Planner</title>
+{#<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">#}
+    <link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
+<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static "css/jquery-ui.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/jquery-ui.structure.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/jquery-ui.theme.css" %}">
+    <link rel="stylesheet" href="{% static "css/to-do.css" %}">
+    <link rel="stylesheet" href="{% static "font-awesome-4.7.0/css/font-awesome.css" %}">
+    <link rel="stylesheet" href="{% static "css/table-responsive.css" %}">
+    <link rel="stylesheet" href="{% static "css/jquery.fancybox.css" %}">
+    <link rel="stylesheet" href="{% static "css/bootstrap-fullcalendar.css" %}">
+    <link rel="stylesheet" href="{% static "css/datepicker.css" %}">
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+    <link rel="stylesheet" href="{% static "css/style-responsive.css" %}">
+
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    {#    <script type="text/javascript" src="{% static "js/jquery.js" %}"></script>#}
+
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+    <link rel="stylesheet" href="{% static "css/custom.css" %}">
+
+        {% block head_js %}{% endblock head_js %}
+
+
+</head>
+
+<body>
+<section id="container">
+    <!-- **********************************************************************************************************************************************************
+    TOP BAR CONTENT & NOTIFICATIONS
+    *********************************************************************************************************************************************************** -->
+    <!--header start-->
+    <header class="header black-bg">
+        <div class="sidebar-toggle-box">
+            <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Menu"></div>
+        </div>
+        <!--logo start-->
+        <a href="/" class="logo"><b>PM Planner</b></a>
+        <!--logo end-->
+        <div class="nav notify-row" id="top_menu">
+            <!--  notification start -->
+            <ul class="nav top-menu">
+                <!-- settings start -->
+
+            </ul>
+            <!--  notification end -->
+        </div>
+        <div class="top-menu">
+            <ul class="nav pull-right top-menu">
+                {% if user.is_authenticated %}
+                    <li><a class="logout" href="{% url 'profile' %}">Profile</a></li>
+                    <li><a class="logout" href="{% url 'logout' %}">Log Out</a></li>
+                {% else %}
+                    <li><a class="logout" href="{% url 'register' %}">Register</a></li>
+                    <li><a class="logout" href="{% url 'login' %}">Log In</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </header>
+
+    <!-- **********************************************************************************************************************************************************
+         MAIN SIDEBAR MENU
+         *********************************************************************************************************************************************************** -->
+    <!--sidebar start-->
+    <aside>
+        <div id="sidebar" class="nav-collapse ">
+            <!-- sidebar menu start-->
+            <ul class="sidebar-menu" id="nav-accordion">
+                <img src="{% static "img/logo250.png" %}" alt="" class="img center-block" width="120">
+                {% if request.user.is_authenticated %} <p class="centered">signed in as</p>
+                    <h5 class="centered">{{ request.user.username }}</h5>
+                {% else %}
+                    <p class="centered"><a class="logout" href="{% url 'login' %}">Log In</a></p>{% endif %}
+
+                <li class="mt">
+                    <a class="active" href="/">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+
+                <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-th"></i>
+                        <span>Client Management</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a href="{% url 'clients' %}">Client list</a></li>
+                        <li><a href="{% url 'create' %}">Add client</a></li>
+                    </ul>
+                </li>
+                <li class="sub-menu">
+                    <a href="{% url 'forum' %}">
+                        <i class="fa fa-comments"></i>
+                        <span>Forum</span>
+                    </a>
+                </li>
+
+                <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-book"></i>
+                        <span>Documentation</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a href="http://www.privatemidwives.com/midwives-log-in-page/" target="_blank">PM web
+                            portal</a></li>
+                        <li><a href="http://www.privatemidwives.com/roi-packages-and-prices/" target="_blank">PM
+                            pricing</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- sidebar menu end-->
+        </div>
+    </aside>
+    <!--sidebar end-->
+
+    <section id="main-content">
+        <section class="wrapper base-wrapper">
+
+            <div class="row">
+                <div class="col-lg-9 main-chart">
+                    <div class="row main-window">
+
+                        {#*******************************#}
+                        {#    BLOCK CONTENT#}
+                        {#*******************************#}
+
+                        {% block content %}
+                        {% endblock %}
+
+
+                        {#End block content#}
+                    </div>
+                </div>
+                <!-- **********************************************************************************************************************************************************
+          RIGHT SIDEBAR CONTENT
+          *********************************************************************************************************************************************************** -->
+
+                <div class="col-lg-3 ds">
+
+                    <h3>NOTIFICATIONS</h3>
+
+                    {% if messages %}
+                        <div class="alert alert-success">
+                            <div class="messages">
+                                {% for message in messages %}
+                                   <p> {{ message|safe }} </p>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endif %}
+                    <!-- Second Action -->
+                    <div class="desc">
+                        <div class="thumb">
+                            <span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
+                        </div>
+                        <div class="details">
+                            <p>
+                                <muted>3 Hours Ago</muted>
+                                <br/>
+                                <a href="#">Diana Kennedy</a> purchased a year subscription.<br/>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Third Action -->
+                    <div class="desc">
+                        <div class="thumb">
+                            <span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
+                        </div>
+                        <div class="details">
+                            <p>
+                                <muted>7 Hours Ago</muted>
+                                <br/>
+                                <a href="#">Brandon Page</a> purchased a year subscription.<br/>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Fourth Action -->
+                    <div class="desc">
+                        <div class="thumb">
+                            <span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
+                        </div>
+                        <div class="details">
+                            <p>
+                                <muted>11 Hours Ago</muted>
+                                <br/>
+                                <a href="#">Mark Twain</a> commented your post.<br/>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Fifth Action -->
+                    <div class="desc">
+                        <div class="thumb">
+                            <span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
+                        </div>
+                        <div class="details">
+                            <p>
+                                <muted>18 Hours Ago</muted>
+                                <br/>
+                                <a href="#">Daniel Pratt</a> purchased a wallet in your store.<br/>
+                            </p>
+                        </div>
+                    </div>
+                </div><!-- /col-lg-3 -->
+            </div>
+            <! --/row -->
+
+        </section>
+
+    </section>
+
+
+    <footer class="site-footer">
+        <div class="text-center">
+
+            © Jodie Gardiner 2017
+            <a href="https://github.com/jodiegardiner/pmi_planner">[Source code]</a>
+            <a href="#main-content" class="go-top"><i class="fa fa-angle-up"></i></a>
+        </div>
+    </footer>
+</section>
+
+
+{#<script type="text/javascript" src="{% static "js/bootstrap.min.js" %}"></script>#}
+<script class="include" type="text/javascript" src="{% static "js/jquery.dcjqaccordion.2.7.js" %}"></script>
+<script type="text/javascript" src="{% static "js/jquery.scrollTo.min.js" %}"></script>
+<script type="text/javascript" src="{% static "js/jquery.nicescroll.js" %}"></script>
+<script type="text/javascript" src="{% static "js/jquery.sparkline.js" %}"></script>
+<script type="text/javascript" src="{% static "js/common-scripts.js" %}"></script>
+<script type="text/javascript" src="{% static "js/jquery-ui.min.js" %}"></script>
+<script type="text/javascript" src="{% static "js/bootstrap-inputmask.min.js" %}"></script>
+<script type="text/javascript" src="{% static "js/bootstrap-switch.js" %}"></script>
+<script type="text/javascript" src="{% static "js/fullcalendar.min.js" %}"></script>
+<script type="text/javascript" src="{% static "js/jquery.backstretch.min.js" %}"></script>
+<script type="text/javascript" src="{% static "js/jquery.fancybox.js" %}"></script>
+<script type="text/javascript" src="{% static "js/sparkline-chart.js" %}"></script>
+<script type="text/javascript" src="{% static "js/jquery.tagsinput.js" %}"></script>
+<script type="text/javascript" src="{% static "js/jquery.ui.touch-punch.min.js" %}"></script>
+<script type="text/javascript" src="{% static "js/tasks.js" %}"></script>
+
+</body>
+</html>

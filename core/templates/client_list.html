@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-4 col-sm-4 btn-margin">
+            <a href="{% url 'create' %}"><button class="btn btn-lg btn-primary btn-pmi">Add a Client</button></a>
+        </div>
+    </div>
+    <div class="row">
+
+        {% for client in clients %}
+
+
+            <div class="col-md-4 col-sm-4 mb">
+                <div class="client-block white-panel showback pn">
+                    <h3>{{ client.name }}</h3>
+                    <hr>
+                    <p>{{ preg.due_date }}</p>
+                    <p>{{ client.address }}</p>
+                    <p class="text-muted">{{ client.notes|truncatewords:15 }}</p>
+                    <p class="pull-right base"><button class="btn btn-primary btn-pmi" onclick="location.href= {{ client.id }}">View/Edit</button></p>
+                </div>
+            </div>
+
+        {% endfor %}
+    </div>
+      <div class="row">
+        <div class="col-md-4 col-sm-4 btn-margin">
+            <a href="{% url 'create' %}"><button class="btn btn-lg btn-primary btn-pmi">Add a Client</button></a>
+        </div>
+    </div>
+{% endblock content %}

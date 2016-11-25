@@ -1,0 +1,83 @@
+/*Theme primary colours:*/
+/*#604999 - purple*/
+/*#8BCDCB - bluey green*/
+
+.btn-pmi {
+    background-color: #8BCDCB;
+}
+
+.btn-pmi:hover, .btn-pmi:active {
+    background-color: #604999;
+}
+
+.base-wrapper {
+    padding-left: 15px;
+}
+
+.black-bg {
+    background-color: #604999;
+}
+
+.main-window {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.client-block {
+    min-height: 225px;
+    color: #797979;
+    padding: 10px;
+}
+
+.btn-margin {
+    margin-bottom: 10px;
+}
+
+.white-panel {
+    text-align: left;
+}
+
+.white-panel p {
+    font-weight: 500;
+    margin-left: 0px;
+}
+
+.base {
+    vertical-align: baseline;
+}
+
+hr {
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.client-header {
+    color: #ffffff;
+    background-color: #604999;
+    font-size: large;
+    padding: 5px;
+}
+
+.editable-click, a.editable-click {
+    border-bottom: none;
+}
+
+a {
+    color: #777
+}
+
+.pn {
+    min-height: 250px;
+}
+
+
+.comment {
+    border: 1px solid black;
+    margin-bottom: 4px;
+    padding-top: 3px;
+}
+
+.subject-name {
+    background-color: #8BCDCB;
+    padding: 3px;
+}

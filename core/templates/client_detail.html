@@ -1,0 +1,228 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block head_js %}
+    <script>
+
+        $(document).ready(function () {
+            $('#address').editable();
+            $('#email').editable();
+            $('#phone').editable();
+            $('#c_notes').editable();
+            $('.editable').editable();
+            $('#p_due_date').editable();
+            $.fn.editable.defaults.mode = 'inline';
+        });
+    </script>
+{% endblock %}
+{% block content %}
+
+    <p>
+        <button class="btn btn-primary btn-pmi" onclick="location.href='/client'">Back to Clients</button>
+    </p>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="client-header">
+                <span>Client detail</span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 col-sm-3 mb">
+            <div class="white-panel showback pn">
+                <h3>{{ client.name }}</h3>
+                <hr>
+                <p class="text-muted"><i class="fa fa-map-marker"></i><a href="#" id="address" data-type="text"
+                                                                         data-pk="{{ client.id }}"
+                                                                         data-url="/update_add/"
+                                                                         data-title="Update address"
+                                                                         data-params="{csrfmiddlewaretoken:'{{ csrf_token }}'}">{{ client.address }}</a>
+                </p>
+                <p class="text-muted"><i class="fa fa-envelope"></i><a href="#" id="email" data-type="text"
+                                                                       data-pk="{{ client.id }}"
+                                                                       data-url="/update_email/"
+                                                                       data-title="Update email"
+                                                                       data-params="{csrfmiddlewaretoken:'{{ csrf_token }}'}">{{ client.email }}</a>
+                </p>
+                <p class="text-muted"><i class="fa fa-phone"></i><a href="#" id="phone" data-type="text"
+                                                                    data-pk="{{ client.id }}" data-url="/update_phone/"
+                                                                    data-title="Update phone number"
+                                                                    data-params="{csrfmiddlewaretoken:'{{ csrf_token }}'}">{{ client.phone }}</a>
+                </p>
+                <p class="text-muted">DOB: <a href="#" class="editable" data-type="date" data-pk="{{ client.id }}"
+                                              data-url="/update_dob/" data-title="Update date of birth"
+                                              data-params="{csrfmiddlewaretoken:'{{ csrf_token }}'}">{{ client.dob }}</a>
+                </p>
+                <p class="text-muted">Hospital ID Number: <a href="#" class="editable" data-type="text"
+                                                             data-pk="{{ client.id }}" data-url="/update_hosp_num/"
+                                                             data-title="Update hospital ID number"
+                                                             data-params="{csrfmiddlewaretoken:'{{ csrf_token }}'}">{{ client.hospital_num }}</a>
+                </p>
+
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-3 mb">
+            <div class="white-panel showback pn">
+                <h3>Clinical info</h3>
+                <hr>
+                <p class="text-muted">Height: <a href="#" class="editable" data-type="text" data-pk="{{ client.id }}"
+                                                 data-url="/update_height/" data-title="Update height"
+                                                 data-params="{csrfmiddlewaretoken:'{{ csrf_token }}'}">{{ client.height }}</a>
+                </p>
+                <p class="text-muted">Weight: <a href="#" class="editable" data-type="text" data-pk="{{ client.id }}"
+                                                 data-url="/update_weight/" data-title="Update weight"
+                                                 data-params="{csrfmiddlewaretoken:'{{ csrf_token }}'}">{{ client.weight }}</a>
+                </p>
+                <p class="text-muted">BMI: <a href="#" class="editable" data-type="text" data-pk="{{ client.id }}"
+                                              data-url="/update_bmi/" data-title="Update BMI"
+                                              data-params="{csrfmiddlewaretoken:'{{ csrf_token }}'}">{{ client.bmi }}</a>
+                </p>
+                <p class="text-muted">Haemoglobin: <a href="#" class="editable" data-type="text"
+                                                      data-pk="{{ client.id }}" data-url="/update_haemo/"
+                                                      data-title="Update haemoglobin"
+                                                      data-params="{csrfmiddlewaretoken:'{{ csrf_token }}'}">{{ client.haemoglobin }}</a>
+                </p>
+                <p class="text-muted">Serology: <a href="#" class="editable" data-type="text" data-pk="{{ client.id }}"
+                                                   data-url="/update_sero/" data-title="Update Serology"
+                                                   data-params="{csrfmiddlewaretoken:'{{ csrf_token }}'}">{{ client.serology }}</a>
+                </p>
+                <p class="text-muted">Blood type: <a href="#" class="editable" data-type="text"
+                                                     data-pk="{{ client.id }}" data-url="/update_bt/"
+                                                     data-title="Update blood type"
+                                                     data-params="{csrfmiddlewaretoken:'{{ csrf_token }}'}">{{ client.blood_type }}</a>
+                </p>
+
+
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 mb">
+            <div class="white-panel showback pn">
+                <h3>Previous Pregnancies (outside Private Midwives)</h3>
+                <hr>
+                <p class="text-muted">Parity: <a href="#" class="editable" data-type="text" data-pk="{{ client.id }}"
+                                                 data-url="/update_para/" data-title="Update Parity"
+                                                 data-params="{csrfmiddlewaretoken:'{{ csrf_token }}'}">{{ client.parity }}</a>
+                </p>
+                <p class="text-muted">Notes: <a href="#" class="editable" data-type="textarea" data-pk="{{ client.id }}"
+                                                data-url="/update_prev_pregs/"
+                                                data-title="Update previous pregnancy notes"
+                                                data-params="{csrfmiddlewaretoken:'{{ csrf_token }}'}">{{ client.prev_pregs }}</a>
+                </p>
+
+            </div>
+        </div>
+
+
+    </div>
+    <div class="row">
+        <div class="col-md-9 col-sm-9 mb">
+            <div class="white-panel showback pn">
+                <h3>General notes</h3>
+                <hr>
+                <p class="text-muted"><a href="#" id="c_notes" data-type="textarea" data-pk="{{ client.id }}"
+                                         data-url="/update_c_notes/" data-title="Update client notes"
+                                         data-params="{csrfmiddlewaretoken:'{{ csrf_token }}'}">{{ client.notes }}</a>
+                </p>
+
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-3 mb">
+            <div class="white-panel showback pn">
+                <h3>GP/Hospital info</h3>
+                <hr>
+                <p class="text-muted">Hosp: <a href="#" class="editable" data-type="text" data-pk="{{ client.id }}"
+                                               data-url="/update_hosp/" data-title="Update hospital details"
+                                               data-params="{csrfmiddlewaretoken:'{{ csrf_token }}'}">{{ client.hospital }}</a>
+                </p>
+                <p class="text-muted">GP: <a href="#" class="editable" data-type="text" data-pk="{{ client.id }}"
+                                             data-url="/update_gp/" data-title="Update GP"
+                                             data-params="{csrfmiddlewaretoken:'{{ csrf_token }}'}">{{ client.gp }}</a>
+                </p>
+                <p class="text-muted">GP Tel: <a href="#" class="editable" data-type="text" data-pk="{{ client.id }}"
+                                                 data-url="/update_gp_tel/" data-title="Update GP contact number"
+                                                 data-params="{csrfmiddlewaretoken:'{{ csrf_token }}'}">{{ client.gp_tel }}</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="client-header">
+                <span>Pregnancies</span>
+            </div>
+        </div>
+    </div>
+    {% for preg in pregs %}
+        <div class="row">
+            <div class="col-md-4 col-sm-4 mb">
+                <div class="white-panel showback pn">
+                    <h3>Due Date</h3>
+                    <hr>
+
+                    <p class="text-muted"><a class="editable" href="#" id="p_due_date" data-type="date"
+                                             data-pk="{{ preg.id }}" data-url="/update_due_date/"
+                                             data-title="Update due date"
+                                             data-params="{csrfmiddlewaretoken:'{{ csrf_token }}'}">{{ preg.due_date }}</a>
+                    </p>
+                    <p class="text-muted">Week care commences: <a href="#" class="editable" data-type="text"
+                                                                  data-pk="{{ client.id }}" data-url="/update_wcc/"
+                                                                  data-title="Update package details"
+                                                                  data-params="{csrfmiddlewaretoken:'{{ csrf_token }}'}">{{ preg.week_care_commences }}</a>
+                    </p>
+
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4 mb">
+                <div class="white-panel showback pn">
+                    <h3>Consultant/PHN info</h3>
+                    <hr>
+
+                    <p class="text-muted">Consultant clinic: <a class="editable" href="#" class="editable"
+                                                                data-type="text"
+                                                                data-pk="{{ preg.id }}" data-url="/update_cons/"
+                                                                data-title="Update consultant clinic"
+                                                                data-params="{csrfmiddlewaretoken:'{{ csrf_token }}'}">{{ preg.consultant_clinic }}</a>
+                    </p>
+                    <p class="text-muted">Public Health Nurse: <a href="#" class="editable" data-type="text"
+                                                                  data-pk="{{ client.id }}" data-url="/update_phn/"
+                                                                  data-title="Update public health nurse info"
+                                                                  data-params="{csrfmiddlewaretoken:'{{ csrf_token }}'}">{{ preg.public_health_nurse }}</a>
+                    </p>
+
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4 mb">
+                <div class="white-panel showback pn">
+                    <h3>Clinical Info</h3>
+                    <hr>
+
+                    <p class="text-muted">Placental site: <a class="editable" href="#" class="editable" data-type="text"
+                                                             data-pk="{{ preg.id }}" data-url="/update_p_site/"
+                                                             data-title="Update placental site"
+                                                             data-params="{csrfmiddlewaretoken:'{{ csrf_token }}'}">{{ preg.placental_site }}</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 mb">
+                <div class="white-panel showback pn">
+                    <h3>Pregnancy general notes</h3>
+                    <hr>
+                    <p class="text-muted"><a class="editable" href="#" data-type="textarea" data-pk="{{ preg.id }}"
+                                             data-url="/update_p_notes/" data-title="Update notes"
+                                             data-params="{csrfmiddlewaretoken:'{{ csrf_token }}'}">{{ preg.notes }}</a>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="client-header">
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock content %}

@@ -1,0 +1,18 @@
+{% load staticfiles %}
+{% load emoticons_tags %}
+<section class="row comment col-md-9">
+    <div class="col-md-1 comment-profile">
+        <img src="{% static 'img/user.png' %}" />
+        <p class="small">{{ post.user.username }}</p>
+        <p class="small">{{ post.user.posts.count }} posts</p>
+    </div>
+    <div class="col-md-11 ">
+        <div class="comment-content">
+            {% autoescape off %}
+                {{ post.comment|emoticons }}
+            {% endautoescape %}
+        </div>
+        {% include "forum/comment_details.html" %}
+    </div>
+
+</section>
