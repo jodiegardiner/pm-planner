@@ -1,1 +1,1 @@
-web: gunicorn pm-planner.wsgi:application
+web: gunicorn pmi_planner.wsgi:application
