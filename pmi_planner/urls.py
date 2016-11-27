@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^client/$', core_views.client_list, name='clients'),
     url(r'^client/(?P<id>\d+)$', core_views.client_details, name='client_detail'),
     url(r'^create/', core_views.create_client, name="create"),
+    url(r'search/', core_views.search, name="search"),
 
     url(r'^update_add/', core_views.update_address, name="update_add"),
     url(r'^update_email/', core_views.update_email, name="update_email"),

@@ -3,20 +3,9 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .forms import ClientCreationForm
 from .models import Client, PregnancyEvent, Pregnancy
 from django.utils import timezone
-from calendar_api import create_calendar_entry
 from calendar_api import create_calendar_entries
-import httplib2
-import os
-from apiclient import discovery
-from oauth2client import client
-from oauth2client import tools
-from oauth2client.file import Storage
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages, auth
-import json
-import datetime
-from datetime import date
-import datedelta
 import datetime
 from event_package import generate_events
 # Create your views here.
@@ -64,6 +53,13 @@ def client_details(request, id):
     client = get_object_or_404(Client, pk=id)
     pregs = Pregnancy.objects.filter(client=client.id)
     return render(request, "client_detail.html", {'client': client, 'pregs': pregs})
+
+
+def search(request):
+    search_term = request.GET
+    clients = Client.objects.filter(name__icontains=search_term)
+    return render(request, "client_list.html", {'clients': clients})
+
 
 
 def update_address(request):

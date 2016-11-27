@@ -11,10 +11,10 @@
     {#    <link rel="icon" href="../../favicon.ico">#}
 
     <title>PM Planner</title>
-{#<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">#}
+    {#<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">#}
     <link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
-<script src="//code.jquery.com/jquery-2.0.3.min.js"></script>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="{% static "css/jquery-ui.min.css" %}">
     <link rel="stylesheet" href="{% static "css/jquery-ui.structure.min.css" %}">
     <link rel="stylesheet" href="{% static "css/jquery-ui.theme.css" %}">
@@ -36,11 +36,12 @@
 
     {#    <script type="text/javascript" src="{% static "js/jquery.js" %}"></script>#}
 
-    <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css"
+          rel="stylesheet"/>
     <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
     <link rel="stylesheet" href="{% static "css/custom.css" %}">
 
-        {% block head_js %}{% endblock head_js %}
+    {% block head_js %}{% endblock head_js %}
 
 
 </head>
@@ -69,7 +70,7 @@
         <div class="top-menu">
             <ul class="nav pull-right top-menu">
                 {% if user.is_authenticated %}
-                    <li><a class="logout" href="{% url 'profile' %}">Profile</a></li>
+                    {#                    <li><a class="logout" href="{% url 'profile' %}">Profile</a></li>#}
                     <li><a class="logout" href="{% url 'logout' %}">Log Out</a></li>
                 {% else %}
                     <li><a class="logout" href="{% url 'register' %}">Register</a></li>
@@ -87,11 +88,12 @@
         <div id="sidebar" class="nav-collapse ">
             <!-- sidebar menu start-->
             <ul class="sidebar-menu" id="nav-accordion">
-                <img src="{% static "img/logo250.png" %}" alt="" class="img center-block" width="120">
+                <img src="{% static "img/logo250.png" %}" alt="Private Midwives icon" class="img center-block"
+                     width="120">
                 {% if request.user.is_authenticated %} <p class="centered">signed in as</p>
                     <h5 class="centered">{{ request.user.username }}</h5>
                 {% else %}
-                    <p class="centered"><a class="logout" href="{% url 'login' %}">Log In</a></p>{% endif %}
+                    <p class="centered"><a href="{% url 'login' %}">Login</a></p>{% endif %}
 
                 <li class="mt">
                     <a class="active" href="/">
@@ -159,69 +161,30 @@
 
                 <div class="col-lg-3 ds">
 
-                    <h3>NOTIFICATIONS</h3>
+
+                    {% if request.user.is_authenticated %}
+                        <h3>YOUR PROFILE</h3>
+                        <div class="white-panel showback pn">
+                            <p class="text-muted">Username: {{ user.username }}</p>
+                            <p class="text-muted">Email: {{ user.email }}</p>
+                            <p class="text-muted">Full Name: {{ user.first_name }} {{ user.last_name }}</p>
+                            <p class="text-muted">Last login: {{ user.last_login }}</p>
+                        </div>
+                    {% endif %}
+
+
+                    <h3 class="mb">NOTIFICATIONS</h3>
 
                     {% if messages %}
                         <div class="alert alert-success">
                             <div class="messages">
                                 {% for message in messages %}
-                                   <p> {{ message|safe }} </p>
+                                    <p> {{ message|safe }} </p>
                                 {% endfor %}
                             </div>
                         </div>
                     {% endif %}
-                    <!-- Second Action -->
-                    <div class="desc">
-                        <div class="thumb">
-                            <span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
-                        </div>
-                        <div class="details">
-                            <p>
-                                <muted>3 Hours Ago</muted>
-                                <br/>
-                                <a href="#">Diana Kennedy</a> purchased a year subscription.<br/>
-                            </p>
-                        </div>
-                    </div>
-                    <!-- Third Action -->
-                    <div class="desc">
-                        <div class="thumb">
-                            <span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
-                        </div>
-                        <div class="details">
-                            <p>
-                                <muted>7 Hours Ago</muted>
-                                <br/>
-                                <a href="#">Brandon Page</a> purchased a year subscription.<br/>
-                            </p>
-                        </div>
-                    </div>
-                    <!-- Fourth Action -->
-                    <div class="desc">
-                        <div class="thumb">
-                            <span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
-                        </div>
-                        <div class="details">
-                            <p>
-                                <muted>11 Hours Ago</muted>
-                                <br/>
-                                <a href="#">Mark Twain</a> commented your post.<br/>
-                            </p>
-                        </div>
-                    </div>
-                    <!-- Fifth Action -->
-                    <div class="desc">
-                        <div class="thumb">
-                            <span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
-                        </div>
-                        <div class="details">
-                            <p>
-                                <muted>18 Hours Ago</muted>
-                                <br/>
-                                <a href="#">Daniel Pratt</a> purchased a wallet in your store.<br/>
-                            </p>
-                        </div>
-                    </div>
+
                 </div><!-- /col-lg-3 -->
             </div>
             <! --/row -->
@@ -235,7 +198,7 @@
         <div class="text-center">
 
             © Jodie Gardiner 2017
-            <a href="https://github.com/jodiegardiner/pmi_planner">[Source code]</a>
+            <a href="https://github.com/jodiegardiner/pm-planner">[Source code]</a>
             <a href="#main-content" class="go-top"><i class="fa fa-angle-up"></i></a>
         </div>
     </footer>

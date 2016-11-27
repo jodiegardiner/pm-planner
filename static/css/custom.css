@@ -70,7 +70,6 @@ a {
     min-height: 250px;
 }
 
-
 .comment {
     border: 1px solid black;
     margin-bottom: 4px;
@@ -80,4 +79,13 @@ a {
 .subject-name {
     background-color: #8BCDCB;
     padding: 3px;
+}
+
+.ds {
+    padding-bottom: 20px;
+}
+
+.srch {
+    font-size: 18px;
+    height: 45px;
 }

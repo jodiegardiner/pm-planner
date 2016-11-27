@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='/login/')
 def profile(request):
-    return render(request, 'profile.html')
+    return render(request, 'client_list.html')
 
 
 def login(request):
@@ -21,7 +21,7 @@ def login(request):
             if user is not None:
                 auth.login(request, user)
                 messages.error(request, "You have successfully logged in")
-                return redirect(reverse('profile'))
+                return redirect(reverse('clients'))
             else:
                 form.add_error(None, "Your username or password was not recognised")
 
@@ -50,7 +50,7 @@ def register(request):
 
             if user:
                 messages.success(request, "You have successfully registered")
-                return redirect(reverse('profile'))
+                return redirect(reverse('clients'))
 
             else:
                 messages.error(request, "unable to log you in at this time!")

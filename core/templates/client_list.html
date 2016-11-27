@@ -2,8 +2,20 @@
 
 {% block content %}
     <div class="row">
-        <div class="col-md-4 col-sm-4 btn-margin">
-            <a href="{% url 'create' %}"><button class="btn btn-lg btn-primary btn-pmi">Add a Client</button></a>
+        <div class="col-md-2 col-sm-2 btn-margin">
+            <a href="{% url 'create' %}">
+                <button class="btn btn-lg btn-primary btn-pmi">Add a Client</button>
+            </a>
+        </div>
+        <div class="col-md-6 col-sm-6">
+
+            <form role="form" method="get" action="{% url 'search' %}">
+                <div class="input-group">
+                    <input type="text" class="srch form-control" placeholder="Search for...">
+                   <span class="input-group-btn"><button type="submit" class="btn btn-lg btn-primary btn-pmi">GO</button></span>
+                </div>
+            </form>
+
         </div>
     </div>
     <div class="row">
@@ -18,15 +30,20 @@
                     <p>{{ preg.due_date }}</p>
                     <p>{{ client.address }}</p>
                     <p class="text-muted">{{ client.notes|truncatewords:15 }}</p>
-                    <p class="pull-right base"><button class="btn btn-primary btn-pmi" onclick="location.href= {{ client.id }}">View/Edit</button></p>
+                    <p class="pull-right base">
+                        <button class="btn btn-primary btn-pmi" onclick="location.href= {{ client.id }}">View/Edit
+                        </button>
+                    </p>
                 </div>
             </div>
 
         {% endfor %}
     </div>
-      <div class="row">
+    <div class="row">
         <div class="col-md-4 col-sm-4 btn-margin">
-            <a href="{% url 'create' %}"><button class="btn btn-lg btn-primary btn-pmi">Add a Client</button></a>
+            <a href="{% url 'create' %}">
+                <button class="btn btn-lg btn-primary btn-pmi">Add a Client</button>
+            </a>
         </div>
     </div>
 {% endblock content %}
