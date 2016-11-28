@@ -1,5 +1,5 @@
 from __future__ import print_function
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, HttpResponse
 from .forms import ClientCreationForm
 from .models import Client, PregnancyEvent, Pregnancy
 from django.utils import timezone
@@ -56,9 +56,14 @@ def client_details(request, id):
 
 
 def search(request):
-    search_term = request.GET
+    search_term = request.GET.get('search_term')
     clients = Client.objects.filter(name__icontains=search_term)
-    return render(request, "client_list.html", {'clients': clients})
+    if len(clients) > 0:
+        return render(request, "client_list.html", {'clients': clients})
+    else:
+        messages.error(request, "No matches for the search: '" + search_term + "'.")
+        clients = Client.objects.filter()
+        return render(request, "client_list.html", {'clients': clients})
 
 
 
