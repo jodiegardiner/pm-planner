@@ -8,7 +8,7 @@
 
     <meta name="google-signin-client_id"
           content="18079445520-8mch9r79c4pqloc27q644ht2um37a7mh.apps.googleusercontent.com">
-    <link rel="icon" href="../../favicon.ico">
+    <link rel="icon" href="{% static "favicon.ico" %}">
 
     <title>PM Planner</title>
 
@@ -18,11 +18,7 @@
     <link rel="stylesheet" href="{% static "css/jquery-ui.min.css" %}">
     <link rel="stylesheet" href="{% static "css/jquery-ui.structure.min.css" %}">
     <link rel="stylesheet" href="{% static "css/jquery-ui.theme.css" %}">
-    <link rel="stylesheet" href="{% static "css/to-do.css" %}">
     <link rel="stylesheet" href="{% static "font-awesome-4.7.0/css/font-awesome.css" %}">
-    <link rel="stylesheet" href="{% static "css/table-responsive.css" %}">
-    <link rel="stylesheet" href="{% static "css/jquery.fancybox.css" %}">
-    <link rel="stylesheet" href="{% static "css/bootstrap-fullcalendar.css" %}">
     <link rel="stylesheet" href="{% static "css/datepicker.css" %}">
     <link rel="stylesheet" href="{% static "css/style.css" %}">
     <link rel="stylesheet" href="{% static "css/style-responsive.css" %}">
@@ -49,7 +45,7 @@
 <body>
 <section id="container">
     <!-- **********************************************************************************************************************************************************
-    TOP BAR CONTENT & NOTIFICATIONS
+    TOP BAR CONTENT
     *********************************************************************************************************************************************************** -->
     <!--header start-->
     <header class="header black-bg">
@@ -60,21 +56,16 @@
         <a href="/" class="logo"><b>PM Planner</b></a>
         <!--logo end-->
         <div class="nav notify-row" id="top_menu">
-            <!--  notification start -->
-            <ul class="nav top-menu">
-                <!-- settings start -->
+            <ul class="nav top-menu"></ul>
 
-            </ul>
-            <!--  notification end -->
         </div>
         <div class="top-menu">
             <ul class="nav pull-right top-menu">
                 {% if user.is_authenticated %}
-                    {#                    <li><a class="logout" href="{% url 'profile' %}">Profile</a></li>#}
-                    <li><a class="logout" href="{% url 'logout' %}">Log Out</a></li>
+                    <li><a class="logout" href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Log Out</a></li>
                 {% else %}
                     <li><a class="logout" href="{% url 'register' %}">Register</a></li>
-                    <li><a class="logout" href="{% url 'login' %}">Log In</a></li>
+                    <li><a class="logout" href="{% url 'login' %}"><i class="fa fa-sign-in"></i> Log In</a></li>
                 {% endif %}
             </ul>
         </div>
@@ -97,7 +88,7 @@
 
                 <li class="mt">
                     <a class="active" href="/">
-                        <i class="fa fa-dashboard"></i>
+                        <i class="fa fa-home"></i>
                         <span>Home</span>
                     </a>
                 </li>
@@ -168,23 +159,25 @@
                             <table class="table">
                                 <tbody>
                                 <tr>
-                                    <td>User</td>
+                                    <td><i class="fa fa-user"></i></td>
                                     <td>{{ user.username }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Name</td>
+                                    <td><i class="fa fa-id-card-o"></i></td>
                                     <td>{{ user.first_name }} {{ user.last_name }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Email</td>
+                                    <td><i class="fa fa-envelope"></i></td>
                                     <td>{{ user.email }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Last login</td>
+                                    <td><i class="fa fa-sign-in"></i></td>
                                     <td>{{ user.last_login }}</td>
                                 </tr>
                                 </tbody>
                             </table>
+                            <p class="text-center">Not you? <a class="logout" href="{% url 'logout' %}"> Log Out <i
+                                    class="fa fa-sign-out"></i></a></p>
 
                         </div>
                     {% endif %}
@@ -204,7 +197,7 @@
 
                 </div><!-- /col-lg-3 -->
             </div>
-            <! --/row -->
+            <!-- /row -->
 
         </section>
 
@@ -214,30 +207,24 @@
     <footer class="site-footer">
         <div class="text-center">
 
-            © Jodie Gardiner 2017
-            <a href="https://github.com/jodiegardiner/pm-planner">[Source code]</a>
+            <span>© Jodie Gardiner 2017 </span>
+            <a href="https://github.com/jodiegardiner/pm-planner"><i class="fa fa-github"></i> [Source code]</a>
             <a href="#main-content" class="go-top"><i class="fa fa-angle-up"></i></a>
         </div>
     </footer>
 </section>
 
 
-{#<script type="text/javascript" src="{% static "js/bootstrap.min.js" %}"></script>#}
 <script class="include" type="text/javascript" src="{% static "js/jquery.dcjqaccordion.2.7.js" %}"></script>
 <script type="text/javascript" src="{% static "js/jquery.scrollTo.min.js" %}"></script>
 <script type="text/javascript" src="{% static "js/jquery.nicescroll.js" %}"></script>
-<script type="text/javascript" src="{% static "js/jquery.sparkline.js" %}"></script>
 <script type="text/javascript" src="{% static "js/common-scripts.js" %}"></script>
 <script type="text/javascript" src="{% static "js/jquery-ui.min.js" %}"></script>
 <script type="text/javascript" src="{% static "js/bootstrap-inputmask.min.js" %}"></script>
 <script type="text/javascript" src="{% static "js/bootstrap-switch.js" %}"></script>
-<script type="text/javascript" src="{% static "js/fullcalendar.min.js" %}"></script>
 <script type="text/javascript" src="{% static "js/jquery.backstretch.min.js" %}"></script>
-<script type="text/javascript" src="{% static "js/jquery.fancybox.js" %}"></script>
-<script type="text/javascript" src="{% static "js/sparkline-chart.js" %}"></script>
-<script type="text/javascript" src="{% static "js/jquery.tagsinput.js" %}"></script>
 <script type="text/javascript" src="{% static "js/jquery.ui.touch-punch.min.js" %}"></script>
-<script type="text/javascript" src="{% static "js/tasks.js" %}"></script>
+
 
 </body>
 </html>

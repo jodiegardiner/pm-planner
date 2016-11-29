@@ -17,7 +17,10 @@
 {% block content %}
 
     <p>
-        <button class="btn btn-primary btn-pmi" onclick="location.href='/client'">Back to Clients</button>
+        <button class="btn btn-primary btn-pmi" onclick="location.href='/client'"><i
+                class="fa fa-arrow-circle-left"></i> Back to Clients
+        </button>
+        <span class="notice pull-right"><i class="fa fa-edit"></i> Click any field to edit</span>
     </p>
     <div class="row">
         <div class="col-md-12">
@@ -48,9 +51,11 @@
                                                                     data-title="Update phone number"
                                                                     data-params="{csrfmiddlewaretoken:'{{ csrf_token }}'}">{{ client.phone }}</a>
                 </p>
-                <p class="text-muted"><i class="fa fa-birthday-cake"></i><a href="#" class="editable" data-type="date" data-pk="{{ client.id }}"
-                                              data-url="/update_dob/" data-title="Update date of birth"
-                                              data-params="{csrfmiddlewaretoken:'{{ csrf_token }}'}">{{ client.dob }}</a>
+                <p class="text-muted"><i class="fa fa-birthday-cake"></i><a href="#" class="editable" data-type="date"
+                                                                            data-pk="{{ client.id }}"
+                                                                            data-url="/update_dob/"
+                                                                            data-title="Update date of birth"
+                                                                            data-params="{csrfmiddlewaretoken:'{{ csrf_token }}'}">{{ client.dob }}</a>
                 </p>
                 <p class="text-muted">Hospital ID Number: <a href="#" class="editable" data-type="text"
                                                              data-pk="{{ client.id }}" data-url="/update_hosp_num/"
@@ -102,7 +107,7 @@
                                                  data-url="/update_para/" data-title="Update Parity"
                                                  data-params="{csrfmiddlewaretoken:'{{ csrf_token }}'}">{{ client.parity }}</a>
                 </p>
-                <p class="text-muted">Notes: <a href="#" class="editable" data-type="textarea" data-pk="{{ client.id }}"
+                <p class="text-muted"><i class="fa fa-sticky-note"></i> <a href="#" class="editable" data-type="textarea" data-pk="{{ client.id }}"
                                                 data-url="/update_prev_pregs/"
                                                 data-title="Update previous pregnancy notes"
                                                 data-params="{csrfmiddlewaretoken:'{{ csrf_token }}'}">{{ client.prev_pregs }}</a>
@@ -118,7 +123,7 @@
             <div class="white-panel showback pn">
                 <h3>General notes</h3>
                 <hr>
-                <p class="text-muted"><a href="#" id="c_notes" data-type="textarea" data-pk="{{ client.id }}"
+                <p class="text-muted"><i class="fa fa-sticky-note"></i><a href="#" id="c_notes" data-type="textarea" data-pk="{{ client.id }}"
                                          data-url="/update_c_notes/" data-title="Update client notes"
                                          data-params="{csrfmiddlewaretoken:'{{ csrf_token }}'}">{{ client.notes }}</a>
                 </p>
@@ -209,7 +214,7 @@
                 <div class="white-panel showback pn">
                     <h3>Pregnancy general notes</h3>
                     <hr>
-                    <p class="text-muted"><a class="editable" href="#" data-type="textarea" data-pk="{{ preg.id }}"
+                    <p class="text-muted"><i class="fa fa-sticky-note"></i><a class="editable" href="#" data-type="textarea" data-pk="{{ preg.id }}"
                                              data-url="/update_p_notes/" data-title="Update notes"
                                              data-params="{csrfmiddlewaretoken:'{{ csrf_token }}'}">{{ preg.notes }}</a>
                     </p>
