@@ -21,7 +21,7 @@ except ImportError:
 
 SCOPES = 'https://www.googleapis.com/auth/calendar'
 CLIENT_SECRET_FILE = 'client_secret.json'
-APPLICATION_NAME = 'Google Calendar API Python Quickstart'
+APPLICATION_NAME = 'pm-planner'
 
 def get_credentials():
     """Gets valid user credentials from storage.
@@ -90,18 +90,3 @@ def create_calendar_entry(entry):
         response = {"url": event_url, "name": event_summary}
 
         return response
-
-
-
-    # now = datetime.datetime.utcnow().isoformat() + 'Z' # 'Z' indicates UTC time
-    # print('Getting the upcoming 10 events')
-    # eventsResult = service.events().list(
-    #     calendarId='primary', timeMin=now, maxResults=10, singleEvents=True,
-    #     orderBy='startTime').execute()
-    # events = eventsResult.get('items', [])
-    #
-    # if not events:
-    #     print('No upcoming events found.')
-    # for event in events:
-    #     start = event['start'].get('dateTime', event['start'].get('date'))
-    #     print(start, event['summary'])

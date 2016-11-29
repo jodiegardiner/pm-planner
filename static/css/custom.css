@@ -42,6 +42,10 @@
     margin-left: 0px;
 }
 
+.white-panel table {
+    color: #797979;
+}
+
 .base {
     vertical-align: baseline;
 }
