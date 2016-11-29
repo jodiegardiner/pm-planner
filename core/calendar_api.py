@@ -21,7 +21,7 @@ except ImportError:
 
 SCOPES = 'https://www.googleapis.com/auth/calendar'
 CLIENT_SECRET_FILE = 'client_secret.json'
-APPLICATION_NAME = 'pm-planner'
+APPLICATION_NAME = 'Google Calendar API Python Quickstart'
 
 def get_credentials():
     """Gets valid user credentials from storage.
