@@ -48,7 +48,7 @@
                                                                     data-title="Update phone number"
                                                                     data-params="{csrfmiddlewaretoken:'{{ csrf_token }}'}">{{ client.phone }}</a>
                 </p>
-                <p class="text-muted"><i class="fa fa-birthday-cake"></i>DOB: <a href="#" class="editable" data-type="date" data-pk="{{ client.id }}"
+                <p class="text-muted"><i class="fa fa-birthday-cake"></i><a href="#" class="editable" data-type="date" data-pk="{{ client.id }}"
                                               data-url="/update_dob/" data-title="Update date of birth"
                                               data-params="{csrfmiddlewaretoken:'{{ csrf_token }}'}">{{ client.dob }}</a>
                 </p>
