@@ -8,6 +8,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages, auth
 import datetime
 from event_package import generate_events
+
+
 # Create your views here.
 
 
@@ -31,7 +33,9 @@ def create_client(request):
             responses = create_calendar_entries(events)
             messages.success(request, "Client created successfully")
             for response in responses:
-                messages.success(request, "<a href=" + response["url"] + "><p>Google Calendar event created - " + response["name"] + "</p></a>")
+                messages.success(request,
+                                 "<a href=" + response["url"] + "><p>Google Calendar event created - " + response[
+                                     "name"] + "</p></a>")
 
             return redirect(client_details, client.pk)
     else:
@@ -64,7 +68,6 @@ def search(request):
         messages.error(request, "No matches for the search: '" + search_term + "'.")
         clients = Client.objects.filter()
         return render(request, "client_list.html", {'clients': clients})
-
 
 
 def update_address(request):
