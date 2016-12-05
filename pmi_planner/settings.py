@@ -154,7 +154,7 @@ AWS_HEADERS = {  # see http://developer.yahoo.com/performance/rules.html#expires
 
 AWS_STORAGE_BUCKET_NAME = 'pm-planner-static'
 AWS_ACCESS_KEY_ID = 'AKIAJDBXQZDFHM2L2BDQ'
-AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
 # This is used by the `static` template tag from `static`, if you're using that. Or if anything else
