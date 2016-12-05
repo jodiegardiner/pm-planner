@@ -156,6 +156,7 @@ AWS_STORAGE_BUCKET_NAME = 'pm-planner-static'
 AWS_ACCESS_KEY_ID = 'AKIAJDBXQZDFHM2L2BDQ'
 AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_HOST = 's3-eu-west-1.amazonaws.com'
 
 # This is used by the `static` template tag from `static`, if you're using that. Or if anything else
 # refers directly to STATIC_URL. So it's safest to always set it.
