@@ -23,19 +23,24 @@ def create_client(request):
         form = ClientCreationForm(request.POST)
         if form.is_valid():
             client = form.save()
-            due_date = datetime.datetime.strptime(request.POST.get('due_date', timezone.now()), "%Y-%m-%d")
             preg = Pregnancy()
             preg.client = client
-            preg.due_date = due_date
-            preg.week_care_commences = int(request.POST.get('purchased_plan'))
+            if form.data['due_date']:
+                due_date = datetime.datetime.strptime(request.POST.get('due_date', timezone.now()), "%Y-%m-%d")
+
+                preg.due_date = due_date
+
+
+                preg.week_care_commences = int(request.POST.get('purchased_plan'))
+
+                events = generate_events(preg, client)
+                responses = create_calendar_entries(events)
+                messages.success(request, "Client created successfully")
+                for response in responses:
+                    messages.success(request,
+                                 "<a target='_blank' href=" + response["url"] + "><p>Google Calendar event created - " + response[
+                                     "name"] + " - click to view</p></a>")
             preg.save()
-            events = generate_events(preg, client)
-            responses = create_calendar_entries(events)
-            messages.success(request, "Client created successfully")
-            for response in responses:
-                messages.success(request,
-                                 "<a href=" + response["url"] + "><p>Google Calendar event created - " + response[
-                                     "name"] + "</p></a>")
 
             return redirect(client_details, client.pk)
     else:

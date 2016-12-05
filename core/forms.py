@@ -17,7 +17,7 @@ class ClientCreationForm(forms.ModelForm):
     # client_phone = forms.CharField(label="Phone", max_length=15, required=False)
     # notes = forms.CharField(widget=forms.Textarea(attrs={'rows': 4}), required=False)
 
-    due_date = forms.DateField(widget=forms.widgets.DateInput(
+    due_date = forms.DateField(required=False, widget=forms.widgets.DateInput(
         attrs={'class': "date_picker", 'id': "due_date", 'name': "due_date",}, format="YYYY-MM-DD")
     )
 

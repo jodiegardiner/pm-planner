@@ -7,7 +7,7 @@ from django.db import models
 
 
 class Client(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, help_text='*Client name is required')
     address = models.CharField(max_length=200, blank=True)
     email = models.EmailField(blank=True)
     phone = models.CharField(max_length=15, blank=True)
@@ -32,8 +32,8 @@ class Client(models.Model):
 
 class Pregnancy(models.Model):
     client = models.ForeignKey(Client, related_name="pregnancies")
-    due_date = models.DateField()
-    week_care_commences = models.IntegerField()
+    due_date = models.DateField(blank=True, default=timezone.now)
+    week_care_commences = models.IntegerField(blank=True, default=4)
     notes = models.TextField(default="Enter notes")
     placental_site = models.CharField(max_length=50, blank=True)
     consultant_clinic = models.CharField(max_length=50, blank=True)
@@ -52,17 +52,4 @@ class PregnancyEvent(models.Model):
     def __str__(self):
         return self.title
 
-
-#
-#
-# class Event():
-#     type foreign key to EventType
-#     client
-#     notes
-#
-#
-# class EventType():
-#     title
-#     when
-#     description
 
