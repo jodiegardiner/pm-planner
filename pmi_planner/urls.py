@@ -1,12 +1,18 @@
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.views import static
 from core import views as core_views
 from accounts import urls as accounts_urls
 from threads import urls as forum_urls
+from products import urls as products_urls
+from payments import urls as payments_urls
+from settings import MEDIA_ROOT
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', core_views.get_index, name="index"),
+
+    url(r'^media/(?P<path>.*)$', static.serve, {'document_root': MEDIA_ROOT}),
 
     url(r'^client/$', core_views.client_list, name='clients'),
     url(r'^client/(?P<id>\d+)$', core_views.client_details, name='client_detail'),
@@ -39,4 +45,6 @@ urlpatterns = [
 
     url(r'', include(accounts_urls)),
     url(r'', include(forum_urls)),
+    url(r'^products/', include(products_urls)),
+    url(r'^payments/', include(payments_urls)),
 ]
