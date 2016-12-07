@@ -37,7 +37,7 @@ def create_client(request):
 
                 # events = generate_events(preg, client)
                 # responses = create_calendar_entries(events)
-                # messages.success(request, "Client created successfully")
+                messages.success(request, "Client created successfully")
                 # for response in responses:
                 #     messages.success(request,
                 #                  "<a target='_blank' href=" + response["url"] + "><p>Google Calendar event created - " + response[
