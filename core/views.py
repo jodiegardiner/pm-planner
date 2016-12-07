@@ -33,13 +33,15 @@ def create_client(request):
 
                 preg.week_care_commences = int(request.POST.get('purchased_plan'))
 
-                events = generate_events(preg, client)
-                responses = create_calendar_entries(events)
-                messages.success(request, "Client created successfully")
-                for response in responses:
-                    messages.success(request,
-                                 "<a target='_blank' href=" + response["url"] + "><p>Google Calendar event created - " + response[
-                                     "name"] + " - click to view</p></a>")
+                # Google Calendar event generation temporarily disabled
+
+                # events = generate_events(preg, client)
+                # responses = create_calendar_entries(events)
+                # messages.success(request, "Client created successfully")
+                # for response in responses:
+                #     messages.success(request,
+                #                  "<a target='_blank' href=" + response["url"] + "><p>Google Calendar event created - " + response[
+                #                      "name"] + " - click to view</p></a>")
             preg.save()
 
             return redirect(client_details, client.pk)
