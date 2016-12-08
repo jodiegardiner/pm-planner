@@ -1,26 +1,51 @@
 {% extends "base.html" %}
 {% block content %}
-    <table class="table table-striped">
-        <thead>
+
+    <div class="row">
+    <h1>Upgrade to access additional features</h1>
+    </div>
+    <div class="row">
+                {% for product in products %}
+    <div class="col-md-4">
+        <table class="table table-striped">
             <tr>
-                <th>Image</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>Buy</th>
-                <th>Cart</th>
+                <th>{{ product.name }}</th>
             </tr>
-        </thead>
-        <tbody>
-            {% for product in products %}
-                <tr>
-                    <td><img height="100" width="100" src="{{ MEDIA_URL }}{{ product.image }}"></td>
-                    <td>{{ product.name }}</td>
-                    <td>{{ product.description }}</td>
-                    <td>{{ product.price }}</td>
-                    <td><a href="{% url 'buy_now_stripe' product.id %}")>Buy Now</a></td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+            <tr>
+                <td>{{ product.description }}</td>
+            </tr>
+            <tr>
+                <td>{{ product.price }}</td>
+            </tr>
+            <tr>
+                <td><a href="{% url 'buy_now_stripe' product.id %}")>Buy Now</a></td>
+            </tr>
+        </table>
+    </div>
+        {% endfor %}
+    </div>
+
+{#    <table class="table table-striped">#}
+{#        <thead>#}
+{#            <tr>#}
+{#                <th>Image</th>#}
+{#                <th>Name</th>#}
+{#                <th>Description</th>#}
+{#                <th>Price</th>#}
+{#                <th>Buy</th>#}
+{#                <th>Cart</th>#}
+{#            </tr>#}
+{#        </thead>#}
+{#        <tbody>#}
+{#            {% for product in products %}#}
+{#                <tr>#}
+{#                    <td><img height="100" width="100" src="{{ MEDIA_URL }}{{ product.image }}"></td>#}
+{#                    <td>{{ product.name }}</td>#}
+{#                    <td>{{ product.description }}</td>#}
+{#                    <td>{{ product.price }}</td>#}
+{#                    <td><a href="{% url 'buy_now_stripe' product.id %}")>Buy Now</a></td>#}
+{#                </tr>#}
+{#            {% endfor %}#}
+{#        </tbody>#}
+{#    </table>#}
 {% endblock %}
