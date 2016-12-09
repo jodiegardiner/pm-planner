@@ -7,13 +7,14 @@ Djano back-end
 
 ## 3rd-party utils
 
-* Theme (Dashgum admin theme)
+* Theme - [Dashgum admin theme](http://blacktie.co/2014/07/dashgum-free-dashboard/)
 * Datepicker js utility
 * NiceScroll - attractive scroll bar
 
 ## Issues
 
 Having your significant other as your client can mean shifting requirements! 
+
 Users are so used to the invisible nature of development now that what they perceive as a trivial feature can mean many lines of code to write and a cascade of issues to tackle.
 
 ## Code for the future
