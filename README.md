@@ -13,7 +13,8 @@ Djano back-end
 
 ## Issues
 
-Having your significant other as your client can mean shifting requirements! Users are so used to the invisible nature of development now that they perceive as a trivial feature can mean many lines of code to write and a cascade of issues to tackle.
+Having your significant other as your client can mean shifting requirements! 
+Users are so used to the invisible nature of development now that what they perceive as a trivial feature can mean many lines of code to write and a cascade of issues to tackle.
 
 ## Code for the future
 
