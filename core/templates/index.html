@@ -7,18 +7,10 @@
         </div>
     </div>
     {% if user.is_authenticated %}
-        <div class="row">
-            <div class="col-md-8 col-sm-8 col-md-offset-2">
 
-                <hr>
-                <br>
-                <p>Welcome back {{ user.username }}</p>
-                <hr>
-            </div>
-        </div>
         <div class="row">
             <div class="showback col-md-4 col-sm-4 col-md-offset-4">
-                <h4><i class="fa fa-angle-right"></i> What would you like to do today?</h4>
+                <h4><i class="fa fa-angle-right"></i> What would you like to do today {{ user.first_name }}?</h4>
                 <a href="{% url 'clients' %}">
                     <button type="button" class="btn btn-primary btn-lg btn-block btn-pmi"><i class="fa fa-th"></i>  MANAGE Clients</button>
                 </a>
