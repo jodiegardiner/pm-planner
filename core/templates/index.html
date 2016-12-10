@@ -18,11 +18,14 @@
         <div class="row">
             <div class="showback col-md-4 col-sm-4 col-md-offset-4">
                 <h4><i class="fa fa-angle-right"></i> What would you like to do today?:</h4>
-                <a href="{% url 'login' %}">
-                    <button type="button" class="btn btn-primary btn-lg btn-block btn-pmi">LOGIN</button>
+                <a href="{% url 'clients' %}">
+                    <button type="button" class="btn btn-primary btn-lg btn-block btn-pmi">Manage Clients</button>
                 </a>
-                <a href="{% url 'register' %}">
-                    <button type="button" class="btn btn-default btn-lg btn-block">REGISTER</button>
+                <a href="{% url 'create' %}">
+                    <button type="button" class="btn btn-primary btn-lg btn-block btn-pmi">Add a new Client</button>
+                </a>
+                <a href="{% url 'forum' %}">
+                    <button type="button" class="btn btn-primary btn-lg btn-block btn-pmi">Browse the Forum</button>
                 </a>
             </div>
         </div>
