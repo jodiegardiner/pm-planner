@@ -11,21 +11,24 @@
             <div class="col-md-8 col-sm-8 col-md-offset-2">
 
                 <hr>
+                <br>
                 <p>Welcome back {{ user.username }}</p>
                 <hr>
             </div>
         </div>
         <div class="row">
             <div class="showback col-md-4 col-sm-4 col-md-offset-4">
-                <h4><i class="fa fa-angle-right"></i> What would you like to do today?:</h4>
+                <h4><i class="fa fa-angle-right"></i> What would you like to do today?</h4>
                 <a href="{% url 'clients' %}">
-                    <button type="button" class="btn btn-primary btn-lg btn-block btn-pmi">Manage Clients</button>
+                    <button type="button" class="btn btn-primary btn-lg btn-block btn-pmi">MANAGE Clients</button>
                 </a>
+                <br>
                 <a href="{% url 'create' %}">
-                    <button type="button" class="btn btn-primary btn-lg btn-block btn-pmi">Add a new Client</button>
+                    <button type="button" class="btn btn-primary btn-lg btn-block btn-pmi">ADD a new Client</button>
                 </a>
+                <br>
                 <a href="{% url 'forum' %}">
-                    <button type="button" class="btn btn-primary btn-lg btn-block btn-pmi">Browse the Forum</button>
+                    <button type="button" class="btn btn-primary btn-lg btn-block btn-pmi">BROWSE the Forum</button>
                 </a>
             </div>
         </div>
