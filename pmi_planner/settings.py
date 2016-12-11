@@ -146,10 +146,10 @@ STATICFILES_DIRS = (
 
 
 
-AWS_HEADERS = {  # see http://developer.yahoo.com/performance/rules.html#expires
-    'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
-    'Cache-Control': 'max-age=94608000',
-}
+# AWS_HEADERS = {  # see http://developer.yahoo.com/performance/rules.html#expires
+#     'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+#     'Cache-Control': 'max-age=94608000',
+# }
 
 AWS_STORAGE_BUCKET_NAME = 'pm-planner-static'
 AWS_ACCESS_KEY_ID = 'AKIAJDBXQZDFHM2L2BDQ'
