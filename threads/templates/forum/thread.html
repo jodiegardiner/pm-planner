@@ -3,14 +3,6 @@
 {% load staticfiles %}
 {% block content %}
 
-    <div class="row">
-        <div class="col-md-12 col-sm-12">
-            <a class="logout" href="{% url "threads" subject.id %}"><i class="fa fa-arrow-circle-left"></i>Back to
-                Thread List
-            </a>
-        </div>
-    </div>
-
     <div class="col-md-12">
         <h2 class="subject-name">{{ thread.name }}</h2>
     </div>
