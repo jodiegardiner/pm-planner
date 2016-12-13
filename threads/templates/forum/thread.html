@@ -2,7 +2,14 @@
 {% load thread_extras %}
 {% load staticfiles %}
 {% block content %}
-
+    
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <button class="btn btn-primary btn-pmi" onclick="location.href='/forum'"><i
+                    class="fa fa-arrow-circle-left"></i> Back to Subject List
+            </button>
+        </div>
+    </div>
     <div class="col-md-12">
         <h2 class="subject-name">{{ thread.name }}</h2>
     </div>
