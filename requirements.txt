@@ -1,7 +1,6 @@
 arrow==0.8.0
 beautifulsoup4==4.5.1
 boto==2.43.0
-datedelta==1.1
 dj-database-url==0.4.1
 Django==1.10.3
 django-emoticons==1.2
