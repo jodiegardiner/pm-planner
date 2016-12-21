@@ -1,5 +1,5 @@
 from __future__ import print_function
-from django.shortcuts import render, get_object_or_404, redirect, HttpResponse
+from django.shortcuts import render, get_object_or_404, redirect, HttpResponse, reverse
 from .forms import ClientCreationForm
 from .models import Client, PregnancyEvent, Pregnancy
 from django.utils import timezone
@@ -8,6 +8,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages, auth
 import datetime
 from event_package import generate_events
+from oauth2client import client
+from pmi_planner import settings
+from oauth2client.client import OAuth2WebServerFlow
 
 
 # Create your views here.
@@ -32,12 +35,12 @@ def create_client(request):
 
                 # Google Calendar event generation temporarily disabled
 
-                # events = generate_events(preg, client)
-                # responses = create_calendar_entries(events)
-                # for response in responses:
-                #     messages.success(request,
-                #                  "<a target='_blank' href=" + response["url"] + "><p>Google Calendar event created - " + response[
-                #                      "name"] + " - click to view</p></a>")
+                events = generate_events(preg, client)
+                responses = create_calendar_entries(events)
+                for response in responses:
+                    messages.success(request,
+                                 "<a target='_blank' href=" + response["url"] + "><p>Google Calendar event created - " + response[
+                                     "name"] + " - click to view</p></a>")
 
             preg.save()
             messages.success(request, "Client created successfully")
@@ -261,3 +264,42 @@ def update_phn(request):
     preg.public_health_nurse = request.POST.get('value')
     preg.save()
     return render(request, "client_detail.html")
+
+
+def get_oauth_flow_object(request):
+    client_id = settings.GOOGLE_CLIENT_ID
+    client_secret = settings.GOOGLE_CLIENT_SECRET
+    scope = settings.GOOGLE_OAUTH2_SCOPE
+
+    redirect_url = request.build_absolute_uri(reverse('oauth_complete'))
+
+    return OAuth2WebServerFlow(client_id=client_id,
+                               client_secret=client_secret,
+                               scope=scope,
+                               redirect_uri=redirect_url)
+
+
+def oauth_start(request):
+    flow = get_oauth_flow_object(request)
+    auth_uri = flow.step1_get_authorize_url()
+    return redirect(auth_uri)
+
+
+def oauth_complete(request):
+    flow = get_oauth_flow_object(request)
+    auth_code = request.GET.get('code')
+    credentials = flow.step2_exchange(auth_code)
+
+    auth_token = str(credentials.access_token)
+    r = request.get('https://www.googleapis.com/oauth2/v1/userinfo?alt=json',
+                     headers={'Authorization': "Bearer %s" % auth_token})
+
+    print
+    "Printing User Info"
+    print
+    r.json()
+
+    redirect_url = request.COOKIES['next']
+    response = redirect(redirect_url)
+    response.set_cookie('credentials', credentials.to_json())
+    return response

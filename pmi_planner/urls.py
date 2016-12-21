@@ -42,6 +42,8 @@ urlpatterns = [
     url(r'^update_phn/', core_views.update_phn, name="update_phn"),
     url(r'^update_cons/', core_views.update_cons, name="update_cons"),
     url(r'^update_p_site/', core_views.update_p_site, name="update_p_site"),
+    url(r'^oauth_complete/', core_views.oauth_complete, name="oauth_complete"),
+    url(r'^oauth_start/', core_views.oauth_start, name="oauth_start"),
 
     url(r'', include(accounts_urls)),
     url(r'', include(forum_urls)),
