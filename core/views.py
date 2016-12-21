@@ -35,12 +35,12 @@ def create_client(request):
 
                 # Google Calendar event generation temporarily disabled
 
-                events = generate_events(preg, client)
-                responses = create_calendar_entries(events)
-                for response in responses:
-                    messages.success(request,
-                                 "<a target='_blank' href=" + response["url"] + "><p>Google Calendar event created - " + response[
-                                     "name"] + " - click to view</p></a>")
+                # events = generate_events(preg, client)
+                # responses = create_calendar_entries(events)
+                # for response in responses:
+                #     messages.success(request,
+                #                  "<a target='_blank' href=" + response["url"] + "><p>Google Calendar event created - " + response[
+                #                      "name"] + " - click to view</p></a>")
 
             preg.save()
             messages.success(request, "Client created successfully")
