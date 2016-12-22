@@ -291,15 +291,9 @@ def oauth_complete(request):
     credentials = flow.step2_exchange(auth_code)
 
     auth_token = str(credentials.access_token)
-    r = request.get('https://www.googleapis.com/oauth2/v1/userinfo?alt=json',
-                     headers={'Authorization': "Bearer %s" % auth_token})
 
-    print
-    "Printing User Info"
-    print
-    r.json()
-
-    redirect_url = request.COOKIES['next']
+    redirect_url = request.build_absolute_uri(reverse('index'))
     response = redirect(redirect_url)
     response.set_cookie('credentials', credentials.to_json())
+    messages.success(request, "Application is authorised to write Google Calendar entries!")
     return response
