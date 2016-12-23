@@ -4,19 +4,19 @@
 [Live site](https://pm-planner.herokuapp.com)
 
 ## Technologies used
-Djano back-end
-MySQL database
-JQuery
-JQueryUI
-Javascript
-Bootstrap 4.0
-FontAwesome
-CSS3
-AWS static/media storage and serve
-Stripe payment system
-Google OAuth2
-Heroku deployment
-Github repo
+* Djano back-end
+* MySQL database
+* JQuery
+* JQueryUI
+* Javascript
+* Bootstrap 4.0
+* FontAwesome
+* CSS3
+* AWS static/media storage and serve
+* Stripe payment system
+* Google OAuth2
+* Heroku deployment
+* Github repo
 
 
 
