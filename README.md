@@ -51,7 +51,7 @@ There are a long list of features planned for the future that utilise the Google
 
 My partner constantly thinks up new and useful features the app could have, and I have also compared what I have done closely to existing similar commerical products already out there. I have much still to do but already I think what I have created is comparable to some of what is commerically available.
 
-The majority of all this organisation and paperwork is currently done by the midwives themselves, with virtually no systems in place with the Company, so there is a real desire to automate and simplify as much of this as possible, freeing up midwives for far more important uses of their time. I see this as a sort of desirable feature that isn't really a feature of the app itself but nevertheless results ina  lot of value to the Company.
+The majority of all this organisation and paperwork is currently done by the midwives themselves, with virtually no systems in place with the Company, so there is a real desire to automate and simplify as much of this as possible, freeing up midwives for far more important uses of their time. I see this as a sort of desirable feature that isn't really a feature of the app itself but nevertheless results in a lot of value to the Company.
 
 ## Theme/UX
 I modified the Dashgum Admin theme quite extensively, incorporating the colour scheme from Private Midwives throughout, as well as using their logo.  It is a trivial matter to reskin the app for another client or for a more "general" theme without any company-specific identity. Something which may prove invaluable in future (it is literally as simple as mass find and replacing the hex values specified at the top of the custom.css file).
