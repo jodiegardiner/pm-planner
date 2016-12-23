@@ -43,7 +43,13 @@ In terms of the models, there are currently two, Clients and Pregnancies. A sing
 
 I wanted to keep the client creation form relatively simple. At a bare minimum, a user only needs to enter a Client's name to create a database entry.  If only a name is provided, a Pregnancy is still created in the database with no information logged in it beyond the link to the Client.  The Pregnancy can be updated at a later date using the inline editor. Most of the fields in the Client record are missing from the client creation form, quite deliberately.  This avoids having one huge sprawling form and given the way that the app is used, most of the details for a client will not be available anyway when the Client record is created.  All these fields are editable directly inline from a Client Detail page. Setting the code up to do this was important to my partner as it best facilitated the way the actual app would be used.
 
-There are a long list of features planned for the future that utilise the Google OAuth code a lot more thoroughly.  Linking to google forms to mail merge the batch of letters that every new birth results in, for example.  Incorporation of an in-app calendar. Ability for users to mark themselves available as "Seconds" for certain dates (Seconds are mandatory backup midwives who attend the birth with the primary midwife). My partner constantly thinks up new and useful features the app could have, and I have also compared what I have done closely to existing similar commerical products already out there. I have much still to do but already I think what I have created is comparable to some of what is commerically available.
+There are a long list of features planned for the future that utilise the Google OAuth code a lot more thoroughly.  
+* Linking to google forms to mail merge the batch of letters that every new birth results in, for example. 
+* Pull down updated Policy documents automatically and alert the midwife to changes to them. 
+* Incorporation of an in-app calendar. 
+* Ability for users to mark themselves available as "Seconds" for certain dates (Seconds are mandatory backup midwives who attend the birth with the primary midwife). 
+
+My partner constantly thinks up new and useful features the app could have, and I have also compared what I have done closely to existing similar commerical products already out there. I have much still to do but already I think what I have created is comparable to some of what is commerically available.
 
 The majority of all this organisation and paperwork is currently done by the midwives themselves, with virtually no systems in place with the Company, so there is a real desire to automate and simplify as much of this as possible, freeing up midwives for far more important uses of their time. I see this as a sort of desirable feature that isn't really a feature of the app itself but nevertheless results ina  lot of value to the Company.
 
