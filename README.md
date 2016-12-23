@@ -35,7 +35,7 @@ I wanted to create an app that would work across multiple platforms as her compa
 I also wanted to keep things very simple as the intended user base are not necessarily tech-savvy, even tech-resistant in some cases, so it had to just work, in an obvious way without fuss or hassle.  Midwives have plenty enough of that.
 
 ## Features
-Currently a user can register/login, create a client, manage existing clients, view and post to a forum, purchase supplies, or visit the Company's webportal.
+Currently a user can register/login, create a client, manage existing clients, view and post to a forum, purchase supplies, or visit the Company's webportal or pricing page.
 
 Technically speaking, the app can indeed be accessed from any device that has a browser and functions on all browsers identically. The accounts package has been modified so that Login is done using either the provided username or email address in combination with a password.
 
